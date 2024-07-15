@@ -1,0 +1,122 @@
+
+
+### Part A: Schedule a Daily Backup of VM at 3:00 AM Using Azure Backup Vault
+
+#### Step 1: Create a Recovery Services Vault
+
+1. **Login to Azure Portal**: Open the [Azure Portal](https://portal.azure.com/).
+2. **Navigate to Recovery Services Vaults**:
+   - In the left-hand menu, click on "Create a resource".
+   - In the "Search the Marketplace" box, type "Recovery Services vault" and select it.
+3. **Create the Vault**:
+   - Click "Create".
+   - Fill in the required fields:
+     - **Name**: Enter a name for the vault.
+     - **Subscription**: Choose your subscription.
+     - **Resource Group**: Select an existing resource group or create a new one.
+     - **Location**: Select the region.
+   - Click "Review + create" and then "Create".
+
+#### Step 2: Configure the Backup Policy
+
+1. **Go to the Recovery Services Vault**:
+   - Navigate to the Recovery Services vault you created.
+2. **Backup Policies**:
+   - Under the "Getting started" section, click on "Backup".
+   - Select "Azure Virtual Machine" and click "OK".
+   - Click on "Backup policy" and then "Create new".
+   - Set the policy details:
+     - **Policy Name**: Enter a name for the policy.
+     - **Backup Schedule**: Set the time to 3:00 AM.
+     - **Retention Range**: Configure retention settings as needed.
+   - Click "OK" to create the policy.
+
+#### Step 3: Apply the Backup Policy to the VM
+
+1. **Add the VM to the Backup**:
+   - In the Recovery Services vault, under "Protected items", click on "Backup items".
+   - Select "Azure Virtual Machine".
+   - Click "Add".
+   - Select the VM you want to back up and apply the backup policy you created.
+   - Click "Enable backup".
+
+
+
+
+
+
+### Part B: Create an Alert Rule for VM CPU Percentage
+
+#### Step 1: Create an Alert Rule in Azure Monitor
+
+1. **Navigate to Azure Monitor**:
+   - In the left-hand menu, select "Monitor".
+2. **Create a New Alert Rule**:
+   - Click on "Alerts" from the Monitor menu.
+   - Click on "+ New alert rule".
+
+#### Step 2: Define the Scope
+
+1. **Select Resource**:
+   - Under the "Scope" section, click on "Select resource".
+   - Choose the VM for which you want to create the alert.
+
+#### Step 3: Set the Condition
+
+1. **Add Condition**:
+   - Click on "Add condition".
+   - Search for and select the "Percentage CPU" signal.
+   - Configure the condition:
+     - **Operator**: Greater than.
+     - **Threshold Value**: 80.
+     - **Aggregation Type**: Average.
+   - Click "Done".
+
+#### Step 4: Configure the Action Group
+
+1. **Create Action Group**:
+   - Under the "Actions" section, click "Create action group".
+   - Fill in the required fields and set the notification preferences (e.g., email).
+   - Click "OK".
+
+#### Step 5: Set the Alert Details
+
+1. **Alert Rule Details**:
+   - Provide a name for the alert rule.
+   - Set the severity level (e.g., Sev 3).
+
+#### Step 6: Enable the Alert Rule
+
+1. **Review and Create**:
+   - Review your settings and click "Create alert rule".
+
+### Part C: Provision Backups in Backup Center
+
+#### Step 1: Navigate to Backup Center
+
+1. **Open Backup Center**:
+   - In the Azure portal, search for "Backup Center" and open it.
+
+#### Step 2: Configure Backup in Backup Center
+
+1. **Set Up Backup**:
+   - Click on "Backup instances" and then "+ Add".
+   - Choose "Azure Virtual Machine".
+   - Select the VM and click "Continue".
+   - Choose the backup policy you created earlier.
+   - Configure the retention period and ensure old backups are retained as per policy.
+
+#### Summary
+
+By following these steps, you'll achieve the following:
+- Scheduled daily backups of your VM at 3:00 AM using Azure Backup Vault.
+- Created an alert rule to notify you via email when the CPU percentage exceeds 80%.
+- Provisioned backups in Backup Center with a configured retention period.
+
+### Resources
+
+1. [Scheduling VM Backup with Azure Backup Vault](https://www.youtube.com/watch?v=lzVQ3NqMnTE)
+2. [Azure Administrator Monitor & Backup Resources](https://learn.microsoft.com/en-us/training/paths/azure-administrator-monitor-backup-resources/)
+3. [Creating an Alert Rule for VM CPU Percentage](https://www.youtube.com/watch?v=A0jAeGf2zUQ)
+4. [Configuring Backup Policy in Azure](https://www.youtube.com/watch?v=DOywwse_j8I)
+
